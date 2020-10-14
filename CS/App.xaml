@@ -1,4 +1,4 @@
-﻿<Application x:Class="DataGridBackground.App"
+<Application x:Class="DataGridBackground.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"

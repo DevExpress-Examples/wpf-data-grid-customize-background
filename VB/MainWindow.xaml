@@ -1,0 +1,93 @@
+<dx:ThemedWindow xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:local="clr-namespace:DataGridBackground"
+                 xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+                 xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+                 xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+                 xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+                 DataContext="{dxmvvm:ViewModelSource Type={x:Type local:MainViewModel}}"
+                 x:Class="DataGridBackground.MainWindow"
+                 dx:DXSerializer.Enabled="True"
+                 WindowKind="Ribbon"
+                 mc:Ignorable="d"
+                 dx:DXSerializer.StoreLayoutMode="All"
+                 Height="370"
+                 Width="750">
+    <Window.Resources>
+
+        <Style TargetType="dxg:GridControl" x:Key="gridControlStyle">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Path=UseBackground}" Value="True">
+                    <Setter Property="Background" Value="{Binding SelectedColor, Converter={dxmvvm:ColorToBrushConverter}}"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Path=UseDataAreaBackground}" Value="True">
+                    <Setter Property="DataAreaBackground" Value="{Binding SelectedColor, Converter={dxmvvm:ColorToBrushConverter}}"/>
+                </DataTrigger>
+                
+                <DataTrigger Binding="{Binding Path=IsMultipleColorsMode}" Value="True">
+                    <Setter Property="Background" Value="{Binding SelectedColor, Converter={dxmvvm:ColorToBrushConverter}}"/>
+                    <Setter Property="DataAreaBackground" Value="{Binding DataAreaSelectedColor, Converter={dxmvvm:ColorToBrushConverter}}"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="225"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock VerticalAlignment="Center"
+                   Text="This is the Window's Background"
+                   FontSize="34"
+                   HorizontalAlignment="Center"/>
+
+        <dxg:GridControl Grid.Column="0"
+                         Style="{StaticResource gridControlStyle}"
+                         x:Name="gridControl1"
+                         ItemsSource="{Binding Items}"
+                         AutoGenerateColumns="AddNew">
+            <dxg:GridControl.View>
+                <dxg:TableView x:Name="tableView1"/>
+            </dxg:GridControl.View>
+        </dxg:GridControl>
+
+        <dx:DXTabControl Grid.Column="1">
+            <dx:DXTabItem Header="Single Color">
+                <Grid>
+                    <StackPanel VerticalAlignment="Top">
+                        <TextBlock Margin="2" Text="Select Background:"/>
+                        <dxe:ColorEdit x:Name="colorEdit1" ShowDefaultColorButton="False" ShowNoColorButton="True"
+                            EditValue="{Binding Path=SelectedColor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+
+                    <StackPanel VerticalAlignment="Bottom">
+                        <RadioButton Content="Full Background"
+                            x:Name="fullBackgroundRadioButton"
+                            IsChecked="{Binding UseBackground, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <RadioButton Content="Data Area Background"
+                            x:Name="dataBackgroundRadioButton"
+                            IsChecked="{Binding UseDataAreaBackground, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                </Grid>
+            </dx:DXTabItem>
+
+            <dx:DXTabItem Header="Different Colors" IsSelected="{Binding IsMultipleColorsMode, Mode=TwoWay}">
+                <Grid>
+                    <StackPanel VerticalAlignment="Top">
+                        <TextBlock Margin="2" Text="Select Background:"/>
+                        <dxe:PopupColorEdit x:Name="colorEdit2" ShowDefaultColorButton="False" ShowNoColorButton="True"
+                            EditValue="{Binding Path=SelectedColor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBlock Margin="2,20,2,2" Text="Select Data Area Background:"/>
+                        <dxe:PopupColorEdit x:Name="colorEdit3" ShowDefaultColorButton="False" ShowNoColorButton="True"
+                            EditValue="{Binding Path=DataAreaSelectedColor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                </Grid>
+            </dx:DXTabItem>
+        </dx:DXTabControl>
+    </Grid>
+</dx:ThemedWindow>
