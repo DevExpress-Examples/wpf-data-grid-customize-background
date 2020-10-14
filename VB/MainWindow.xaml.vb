@@ -15,24 +15,6 @@ Namespace DataGridBackground
 	Public Class MainViewModel
 		Inherits ViewModelBase
 
-		Public Property UseBackground() As Boolean
-			Get
-				Return GetProperty(Function() UseBackground)
-			End Get
-			Set(ByVal value As Boolean)
-				SetProperty(Function() UseBackground, value)
-			End Set
-		End Property
-
-		Public Property UseDataAreaBackground() As Boolean
-			Get
-				Return GetProperty(Function() UseDataAreaBackground)
-			End Get
-			Set(ByVal value As Boolean)
-				SetProperty(Function() UseDataAreaBackground, value)
-			End Set
-		End Property
-
 		Public Property SelectedColor() As Color
 			Get
 				Return GetProperty(Function() SelectedColor)
@@ -51,15 +33,6 @@ Namespace DataGridBackground
 			End Set
 		End Property
 
-		Public Property IsMultipleColorsMode() As Boolean
-			Get
-				Return GetProperty(Function() IsMultipleColorsMode)
-			End Get
-			Set(ByVal value As Boolean)
-				SetProperty(Function() IsMultipleColorsMode, value)
-			End Set
-		End Property
-
 		Public Overridable Property Items() As ObservableCollection(Of Employee)
 			Get
 				Return GetProperty(Function() Items)
@@ -68,13 +41,10 @@ Namespace DataGridBackground
 				SetProperty(Function() Items, value)
 			End Set
 		End Property
-
 		Public Sub New()
-			UseBackground = True
 			Items = Stuff.GetStuff()
 		End Sub
 	End Class
-
 
 	Public Class Employee
 		Public Property ID() As Integer
