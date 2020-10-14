@@ -1,4 +1,4 @@
-﻿using DevExpress.Mvvm;
+using DevExpress.Mvvm;
 using DevExpress.Xpf.Core;
 using System.Collections.ObjectModel;
 using System.Windows.Media;
@@ -6,24 +6,12 @@ using System.Windows.Media;
 namespace DataGridBackground
 {
     public partial class MainWindow : ThemedWindow {
-
         public MainWindow() {
             InitializeComponent();  
         }
     }
 
     public class MainViewModel : ViewModelBase {
-
-        public bool UseBackground {
-            get { return GetProperty(() => UseBackground); }
-            set { SetProperty(() => UseBackground, value); }
-        }
-
-        public bool UseDataAreaBackground {
-            get { return GetProperty(() => UseDataAreaBackground); }
-            set { SetProperty(() => UseDataAreaBackground, value); }
-        }
-
         public Color SelectedColor {
             get { return GetProperty(() => SelectedColor); }
             set { SetProperty(() => SelectedColor, value); }
@@ -34,22 +22,14 @@ namespace DataGridBackground
             set { SetProperty(() => DataAreaSelectedColor, value); }
         }
 
-        public bool IsMultipleColorsMode {
-            get { return GetProperty(() => IsMultipleColorsMode); }
-            set { SetProperty(() => IsMultipleColorsMode, value); }
-        }
-
         public virtual ObservableCollection<Employee> Items {
             get { return GetProperty(() => Items); }
             set { SetProperty(() => Items, value); }
         }
-
         public MainViewModel() {
-            UseBackground = true;
             Items = Stuff.GetStuff();
         }
     }
-
 
     public class Employee {
         public int ID { get; set; }
