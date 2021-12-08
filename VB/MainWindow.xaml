@@ -15,13 +15,6 @@
                  dx:DXSerializer.StoreLayoutMode="All"
                  Height="530"
                  Width="725">
-    <Window.Resources>
-        <Style TargetType="dxg:GridControl" x:Key="gridControlStyle">
-            <Setter Property="Background" Value="{Binding SelectedColor, Converter={dxmvvm:ColorToBrushConverter}}"/>
-            <Setter Property="DataAreaBackground" Value="{Binding DataAreaSelectedColor, Converter={dxmvvm:ColorToBrushConverter}}"/>
-        </Style>        
-    </Window.Resources>
-
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -29,8 +22,8 @@
         </Grid.ColumnDefinitions>
 
         <dxg:GridControl Grid.Column="0"
-                         Style="{StaticResource gridControlStyle}"
-                         x:Name="gridControl1"
+                         Background="{Binding SelectedColor, Converter={dxmvvm:ColorToBrushConverter}}"
+                         DataAreaBackground="{Binding DataAreaSelectedColor, Converter={dxmvvm:ColorToBrushConverter}}"
                          ItemsSource="{Binding Items}"
                          AutoGenerateColumns="AddNew">
             <dxg:GridControl.View>
