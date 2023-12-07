@@ -9,7 +9,7 @@ This example demonstrates how to use the [WPF ColorEdit](https://docs.devexpress
 
 ![WPF Data Grid - Customize Background Color, DevExpress](https://raw.githubusercontent.com/DevExpress-Examples/how-to-specify-wpf-data-grid-background/22.2.2%2B/i/wpf-data-grid-background-customization-devexpress.png)
 
-The [GridControl.Background](https://docs.devexpress.com/WPF/DevExpress.Xpf.Grid.GridControl.Background) property specifies the background color of UI elements such as column headers, group panel, row indicator.
+The [GridControl.Background](https://docs.devexpress.com/WPF/DevExpress.Xpf.Grid.GridControl.Background) property specifies the background color of UI elements such as column headers, the group panel, and the row indicator.
 
 The [GridControl.DataAreaBackground](https://docs.devexpress.com/WPF/DevExpress.Xpf.Grid.DataControlBase.DataAreaBackground) property specifies the background color of data cells and group rows.
 
