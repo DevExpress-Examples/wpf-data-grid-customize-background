@@ -6,7 +6,7 @@
 <!-- default badges end -->
 # WPF Data Grid - Customize Background Color
 
-This example demonstrates how to use the [WPF ColorEdit](https://docs.devexpress.com/WPF/DevExpress.Xpf.Editors.ColorEdit?v=20.2&p=netframework) control to customize the background color of grid UI elements.
+This example demonstrates how to use the [WPF ColorEdit](https://docs.devexpress.com/WPF/DevExpress.Xpf.Editors.ColorEdit) control to customize the background color of grid UI elements.
 
 ![WPF Data Grid - Customize Background Color, DevExpress](https://raw.githubusercontent.com/DevExpress-Examples/how-to-specify-wpf-data-grid-background/22.2.2%2B/i/wpf-data-grid-background-customization-devexpress.png)
 
@@ -59,3 +59,4 @@ public class MainViewModel : ViewModelBase {
 
 (you will be redirected to DevExpress.com to submit your response)
 <!-- feedback end -->
+
